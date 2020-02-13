@@ -1,41 +1,39 @@
 dist: xenial
 sudo: false
-
 language: scala
-
 jdk:
-  - openjdk8
-  - openjdk11
+- openjdk8
+- openjdk11
 
 scala:
-  - 2.12.10
+- 2.12.10
 
 env:
   global:
-    - secure: Msrzp7tssXc1InD37lu2GXRBEgS9U7SGhS/7Us5GivwWnRrzpYhrGKg77sWYKeDHU5V8544T/1p3lNTeIOixmnwfHplSb8EifgE2QYItdgItwsthyH6kWVaR28WZe4u15Pl/ICGtO1Y41c6mH/LiE5X+4mZnpf66hG8GXcOCaLtTk/HD6ZjufaG8f/IidsV/dLFa4hSay1yvEcOwZhcxeaiKbXsOCwAARSNJ/oJhI4ERTNBgwjDueSbiYZHEf1kVMOH89FTSz9Viimw/hxMmW6Ouh6fAvgz5NRPHvNbNyCT9zxmGkregv8NhQwRzbfdWmhiG/MnpZ/FsxCNazMFPc/48OeUEAiEU/DKsYCy8etq6I2dfJ2AANazMUq0zfWAJzED+lARVl2TvSSuDJkRzGC0z5CsjuEDI40+LVHPsN53ARERygCX7ecmUBjQPdFQnSgYIdYgpGekB1ocXvVA7FKDJ5iFcJauIpGSNZha6kfjS0y49M5I6kjOhZV0c0J0GG8GTqpE/xe0nQhKbHN9Os5aY1WZb+JTYoQ5DrhAPlJcDyaT+5jrbgegowPnQxl5RLU5RT6NA95mo3EDM0xsYy03COl5GwANJcwJDaFkxJNgnmySlh0V5kuyxmdPnBYI4ATEyD3BbnpaN5AM7iNgS+mTbOHlsrqTAGKicHEJg40s=
-    - secure: UCmJ/R5ShE97hYIvsft4/Yh4B8gFKg2dJHvhlRJqb2VMWYFZZNRXiiFmpKUaaqWt0Wh3wstHKXIhTGHroqV9spnvd60EAFSeLZOp4ZaJx1F6ZM8af6jRyB5MHHaQb+50pjzq3ikkkP+fJ97+Ee8tN+o73M+CAHxYngJdzihXtpWNTaCyFHQMu2V38II1MAzvy3TeZt6EypTARQK6z4ZmipcGNF1Himb4cOsH1opoSRk+tFlTNO7lFCg9iz4mdCWspxMA6PCCQ575MouBv4gbwjCUPW825MazPSfEeMkwUfq5gxVCjFkYQIw+nZ3ZXtYs4N7E5HKS+VRUBAZNvs+mWFmGOfE5cHAI3fvUTyEyTMQUWVGjZ/5UHVVcrx1xbSWdTUczfwQvkTDcojTtQ6TOoo9kWJDJe2B/Oroxxgu7SirUNPOnBuC1ZhM3TtxI1Gzow4nHRYidD2kT5qOX/IRLtS4K2Iy2502X+Dn+6edLxb76v+ONOJ2NQd9G7tRsKbM/VIAby2/zQDeZetJ7NzQJLGj5ajagCvidzMiSq4w5PsAfRsUrhVtrhZ3zTKWHO87rShSz5oTMWAS0+RLZ0ra4YcEi8OnM1FUBf/nvZdiJu8X01UlGPHNXp0PkhPN3a1KT0sEPAm0OxTgo78+zosbuxKC+IswuWMeKsDkSRJDIbWQ=
-    - secure: dQfZfrC73Oyj+6jEpCpMWIIUsr6Wm7WBLREw1X+nSxA3/ZkIqZ25xIs4kN/o4gv2ay43hwLpDKfeP4dnpSYt7mPu5T2wlP+5Ih1zrZFXJrUD5RkuRzeKHG3S4aKEJcLK85dYCdKLhtJXeaBOeOUTrUcrEXPlbTTW91uWU5ewuTsjmI0TDPesi5YvCB2V0tihyMBmnXzxwZHKnJYVfdGQhPKyMB5JetIW7prvQoJtsK4ViIQJjunlY9wB9ENu92mXYQ8SbMo1gCjT3+XDcrYRgTh56uKx9hzp1o1RvColW2+kWM3OEWScU2Z/GPzDvn37i3e6DVP3SOhS/mAW3I8FyeRpGSRlPbB2RJ+qyc9gBWYgh2L3Y5sNVi7UrOYOjOAA/KWa8XYqVg+iTYjpnzIt1Qj7NdhjVuDpe4MJhz20wNXPyffqsNSrRrc524GebymyKK1Yll1nHDQNfpOaHoWudt4s8AIAkMJFPcGOi5WWZvaW5jQWJrTuX1cMvtx4nX85jhm8piEC0PVhxoB3GaxVWktrB6QVXFueFM7YYhu8PZxOshOFVmPcwD6E3hmspuNB2IIbdBPYlYrLl07hOq+I/+J94Hi+8asnPvujFmKH0lnJZiC0pwfzLAXV+E1b3DcxDw7Uf/x/8tKa0LOVYLYYbI3PRpBvTTrCNKXSq/0asTQ=
+  - secure: WnYe/3aAebXDQi1DjKaNSRAQOsx6bZUlf5Q6qh8rPK5QBVxl3MaYh2oTOi662T7A8+hOcItXqX5zfBYJbhaXRPnL8aFm0pMrRj1j5MmQNBSwrfOaCxxKmk2NNI+Q+N7biyJ2Qiu2WGMQmNqWnpbQbiX17+qOIKduH6hKF3XGQuxdV3IUKg1Ks/4ZjfpVHyA/GFjPBJuGXNlCtI9yzIMWafM3garZ24Rf6pKzyOinpGLCnkiRt0NMSSVRFA2IpTOYwWNQN8Qnw8MhAh+fair64tyHABgMIyzfNxvV9hSQvpicQ4UG7GT1wH/Pu8qvOrVTJRkGTxRJEq4txbUWIJJZjM0rgxz7q3bqKiE7zqOI4G5bP/ZN8qNq5WhJ66S8vwB3dgMjBFMOgJO3IC1/hHJT531kFd6btOzNg8lX3PVGmJ5YwJ/9SfSYMA3SoKvKNvoCqntACl+/abLH5PyhW+HTe/lQcUqXfKuwlT7uzef3dvESqioS3yCtLL818bJjqTH8scg1l3F2dRs+qouWbR+qqz4dTlLL9fEWStOjyzL3y4K/YAZE879yYoAeWJ8+776d6jRzZXDNpznPUWBadLxQYPBNoxMV4+fJvs99Efabv6+USiSgirSs/wkWJN+pHt5c5iZ6nkjW0ASMbf3u3+gaU0UP/hKDZ5XgyzUyxLT1ris=
+  - secure: LihtasWOIotQAgO+qHW+m8l7L3WCmY1ujLiXfHzm9C7A5vRFkC5dbVR36dNw+HS7uXnJZDp+nNRSA38ZfN40ZKl3Baur9PH32MitgfKhQngpKCkjLldrJ+eQ0srb5nTzVp5e70a2IccHQiPv29aIV7rY9ENNhtZU7OOruAG1i5NbIunaKEYhdyaIqtP5LWzpRD5si96vPzxQIdEPFedqm21c4FY66sjP/1eml0Zny0BNJ2XC8elsmnZkzx72f0OfjVXkE295l7amyIfn08O+dmTT4sj8Z6I6GeMEjHbzHBqo8KZ4NdbZX5Im9kaMSmcYl7vYYONvQInZ6p/AuLUj1BDPC8nRz1G8uCOiH+dJ1UQo6xwLcVJ5iImisvKIhf/Xf/QVZmIFOlcL4qGDU4yjbvux4IrxkPAsYd4urITc7T6RLbwernPKz4oplKoie+JVHOSM5i8NUhMWZo4JF1bFDwkr9P7BzsbD7G7CCCFy+nfcsE0OhTGktO51nqNIIsAO5QhVdKQSY3SZaq7VPxFheiwQLTwYpbFzFqnNWCLwGzY4RoRTPqxiyIOj6SofFAOnbL+9FBEAjeKxV/21wnqbfk5iHbQ9oulhpM+mtX2yw1S8ImxQ9oe1PHWN1MJdEyqGHx1wbz7aGI9iGFLAnUmUWkUZ5CuHsKxh/uwu7uZYh4s=
+  - secure: rl+J/CCRsEaIkR7w3dmzb6h52bV+yxI4UzN7IFmwIZtWDo6dZ8zu1H+O2giCs9RwYr3m191MSAUHDm8YWcwLEvsV/Sqsxb3Vxx8jTpsuLW8yg9kZ4z96p5Ly1l9Uox824OZNPXs63ARdBxA7uaZsgoMmf1jFPuErvsfiq4FffMZYGbVEjsMgJfdI/FcDJimZvVFGQP2/1b4tPm3PAJ2+eXM0PX7em4Wdob9UuReIlIui8D4LzPQ4Uvyq27Jq0jUH/e53l7jAB4fSzFPhs3AppSOheKInEWz/IKurwbtiYuzTR4/OvbMW9wqAgUWe2aPSHSa8HHxgCM0x9DvJ1d2FvGt9iHOld7CGDIJHVA0zgMtKS0o6tkERIboUVUzlAqDpbz/9CdYJ/WHNZoZZucRQlAHy1dPjE83uGjnS7W8yjNW74/1NIRzZhReeQPCrlic2m3vEeN9dRR+n4Z4ibgAprjE9GO5yfBPDBer78NleVMra6pYiLOLPCitetkZOdayp0+q5SM4rDBLVbS56fwPJ0wMZyewQ8pTUFakJMlZseKcaaLib8M3cLefk29ktD43D36n/ZE492Je/yek3VLmU2MC189pbqCe/9z6+7J+nEo6zrPp213a1/OMDXvZJ85uUNiWSQAZO7JYv5KTNte6+wKogmz2iH9Ut+4MNPKYF6PQ=
 
 before_install:
-  - if [[ -n "${TRAVIS_TAG}" && "${TRAVIS_PULL_REQUEST}" = "false" ]]; then
-      openssl aes-256-cbc -K $encrypted_d57b5eec735f_key -iv $encrypted_d57b5eec735f_iv -in .travis/secrets.tar.enc -out .travis/local.secrets.tar -d;
-      tar xv -C .travis -f .travis/local.secrets.tar;
-    fi
+- if [[ -n "${TRAVIS_TAG}" && "${TRAVIS_PULL_REQUEST}" = "false" ]]; then
+    openssl aes-256-cbc -K $encrypted_8a4bd8b95e8a_key -iv $encrypted_8a4bd8b95e8a_iv -in .travis/secrets.tar.enc -out .travis/local.secrets.tar -d; tar xv -C .travis -f .travis/local.secrets.tar;
+  fi
 
 script:
-  - sbt ++$TRAVIS_SCALA_VERSION scalafmtCheck scalafmtSbtCheck clean coverage test
+- sbt ++$TRAVIS_SCALA_VERSION scalafmtCheck scalafmtSbtCheck clean coverage test
 
 after_success:
-  - sbt ++$TRAVIS_SCALA_VERSION coverageReport coveralls
-  - if [[ -n "${TRAVIS_TAG}" && "${TRAVIS_PULL_REQUEST}" = "false" ]]; then sbt -Dsbt.color=always -Dsbt.supershell=false ++$TRAVIS_SCALA_VERSION releaseEarly;
-    fi
-  - bash <(curl -s https://codecov.io/bash)
+- sbt ++$TRAVIS_SCALA_VERSION coverageReport coveralls
+- if [[ -n "${TRAVIS_TAG}" && "${TRAVIS_PULL_REQUEST}" = "false" ]]; then
+    sbt -Dsbt.color=always -Dsbt.supershell=false ++$TRAVIS_SCALA_VERSION releaseEarly;
+  fi
+- bash <(curl -s https://codecov.io/bash)
 
 before_cache:
-  - find $HOME/.ivy2/cache -name "ivydata-*.properties" -print -delete
-  - find $HOME/.sbt        -name "*.lock"               -print -delete
+- find $HOME/.ivy2/cache -name "ivydata-*.properties" -print -delete
+- find $HOME/.sbt        -name "*.lock"               -print -delete
 
 cache:
   directories:
-    - "$HOME/.ivy2/cache"
-    - "$HOME/.sbt"
+  - "$HOME/.ivy2/cache"
+  - "$HOME/.sbt"
