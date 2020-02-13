@@ -1,10 +1,10 @@
-import sbt.Keys.{credentials, publishTo}
+import sbt.Keys.{ credentials, publishTo }
 
-lazy val scala212 = "2.12.10"
-lazy val scala213 = "2.13.1"
+lazy val scala212               = "2.12.10"
+lazy val scala213               = "2.13.1"
 lazy val supportedScalaVersions = List(scala212, scala213)
 
-scalaVersion in ThisBuild := scala212
+scalaVersion       in ThisBuild := scala212
 crossScalaVersions in ThisBuild := supportedScalaVersions
 
 lazy val commonSettings = Seq(
@@ -25,9 +25,9 @@ lazy val root = project
   .settings(noPublishSettings)
   .aggregate(circe, play, tests)
 
-lazy val CirceVersion = "0.12.3"
-lazy val PlayVersion = "2.8.0-M7"
-lazy val ScanamoVersion = "1.0.0-M12"
+lazy val CirceVersion     = "0.12.3"
+lazy val PlayVersion      = "2.8.0-M7"
+lazy val ScanamoVersion   = "1.0.0-M12"
 lazy val ScalaTestVersion = "3.1.0-RC2"
 
 lazy val circe = project
@@ -39,9 +39,9 @@ lazy val circe = project
     moduleName := "scanamo-circe",
     libraryDependencies ++=
       Seq(
-        "io.circe" %% "circe-parser" % CirceVersion,
-        "org.scanamo" %% "scanamo" % ScanamoVersion,
-        "org.scalatest" %% "scalatest" % ScalaTestVersion % "test"
+        "io.circe"      %% "circe-parser" % CirceVersion,
+        "org.scanamo"   %% "scanamo"      % ScanamoVersion,
+        "org.scalatest" %% "scalatest"    % ScalaTestVersion % "test"
       )
   )
   .dependsOn(tests % "test")
@@ -56,8 +56,8 @@ lazy val play = project
     libraryDependencies ++=
       Seq(
         "com.typesafe.play" %% "play-json" % PlayVersion,
-        "org.scanamo" %% "scanamo" % ScanamoVersion,
-        "org.scalatest" %% "scalatest" % ScalaTestVersion % "test"
+        "org.scanamo"       %% "scanamo"   % ScanamoVersion,
+        "org.scalatest"     %% "scalatest" % ScalaTestVersion % "test"
       )
   )
   .dependsOn(tests % "test")
@@ -71,17 +71,16 @@ lazy val tests = project
     moduleName := "scanamo-json-tests",
     libraryDependencies ++=
       Seq(
-        "org.scanamo" %% "scanamo" % ScanamoVersion,
+        "org.scanamo"   %% "scanamo"   % ScanamoVersion,
         "org.scalatest" %% "scalatest" % ScalaTestVersion
       )
   )
 
 lazy val noPublishSettings = Seq(
-  publish := {},
-  publishLocal := {},
+  publish         := {},
+  publishLocal    := {},
   publishArtifact := false
 )
-
 
 lazy val publishSettings = Seq(
   publishMavenStyle      := true,

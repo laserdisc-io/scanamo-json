@@ -1,10 +1,10 @@
 package io.github.howardjohn.scanamo
 
-import com.amazonaws.services.dynamodbv2.document.{Item, ItemUtils}
+import com.amazonaws.services.dynamodbv2.document.{ Item, ItemUtils }
 import io.circe.parser._
 import io.circe.syntax._
-import io.circe.{Decoder, Encoder}
-import org.scanamo.{DynamoFormat, DynamoReadError, DynamoValue, TypeCoercionError}
+import io.circe.{ Decoder, Encoder }
+import org.scanamo.{ DynamoFormat, DynamoReadError, DynamoValue, TypeCoercionError }
 
 import scala.collection.JavaConverters._
 import cats.implicits._

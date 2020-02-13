@@ -1,14 +1,14 @@
 package io.github.howardjohn.scanamo
 
-import org.scalatest.{Assertion, EitherValues, FunSuite, Matchers}
+import org.scalatest.{ Assertion, EitherValues, FunSuite, Matchers }
 import org.scanamo.DynamoFormat
 
 trait DynamoFormatBehavior extends Matchers with EitherValues { this: FunSuite =>
   def dynamoFormatTest[T](parse: String => Either[Any, T])(format: DynamoFormat[T]): Unit = {
     def roundTrip(input: String, expected: String): Assertion = {
-      val json = parse(input)
+      val json      = parse(input)
       val attribute = format.write(json.right.value).toAttributeValue
-      val jsonResp = format.read(attribute)
+      val jsonResp  = format.read(attribute)
       assert(expected === attribute.toString)
       assert(jsonResp === json)
     }
@@ -19,14 +19,24 @@ trait DynamoFormatBehavior extends Matchers with EitherValues { this: FunSuite =
     test("bool value")(roundTrip("""{"a":true}""", "{M: {a={BOOL: true}},}"))
     test("null value")(roundTrip("""{"a":null}""", "{M: {a={NULL: true,}},}"))
     test("map map")(roundTrip("""{"nested":{"a":1}}""", "{M: {nested={M: {a={N: 1,}},}},}"))
-    test("int list value")(roundTrip("""{"a":[1,2,3]}""", "{M: {a={L: [{N: 1,}, {N: 2,}, {N: 3,}],}},}"))
-    test("string list value")(roundTrip("""{"a":["b","c","d"]}""", "{M: {a={L: [{S: b,}, {S: c,}, {S: d,}],}},}"))
+    test("int list value")(
+      roundTrip("""{"a":[1,2,3]}""", "{M: {a={L: [{N: 1,}, {N: 2,}, {N: 3,}],}},}")
+    )
+    test("string list value")(
+      roundTrip("""{"a":["b","c","d"]}""", "{M: {a={L: [{S: b,}, {S: c,}, {S: d,}],}},}")
+    )
     test("mixed values")(roundTrip("""{"a":1,"b":"value"}""", "{M: {a={N: 1,}, b={S: value,}},}"))
     test("mixed list") {
-      roundTrip("""{"a":[1,"b",false,null]}""", "{M: {a={L: [{N: 1,}, {S: b,}, {BOOL: false}, {NULL: true,}],}},}")
+      roundTrip(
+        """{"a":[1,"b",false,null]}""",
+        "{M: {a={L: [{N: 1,}, {S: b,}, {BOOL: false}, {NULL: true,}],}},}"
+      )
     }
     test("nested list") {
-      roundTrip("""{"a":[1,[2,[3]]]}""", "{M: {a={L: [{N: 1,}, {L: [{N: 2,}, {L: [{N: 3,}],}],}],}},}")
+      roundTrip(
+        """{"a":[1,[2,[3]]]}""",
+        "{M: {a={L: [{N: 1,}, {L: [{N: 2,}, {L: [{N: 3,}],}],}],}},}"
+      )
     }
     test("just bool")(roundTrip("true", "{BOOL: true}"))
     test("just number")(roundTrip("1", "{N: 1,}"))
