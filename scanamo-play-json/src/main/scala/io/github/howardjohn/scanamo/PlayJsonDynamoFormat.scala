@@ -1,9 +1,9 @@
 package io.github.howardjohn.scanamo
 
-import com.amazonaws.services.dynamodbv2.document.{Item, ItemUtils}
+import com.amazonaws.services.dynamodbv2.document.{ Item, ItemUtils }
 import com.amazonaws.services.dynamodbv2.model.AttributeValue
-import org.scanamo.{DynamoFormat, DynamoReadError, DynamoValue, TypeCoercionError}
-import play.api.libs.json.{Format, Json}
+import org.scanamo.{ DynamoFormat, DynamoReadError, DynamoValue, TypeCoercionError }
+import play.api.libs.json.{ Format, Json }
 
 import scala.collection.JavaConverters._
 import scala.util.Try
