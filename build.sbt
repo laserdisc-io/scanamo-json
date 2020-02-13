@@ -98,53 +98,16 @@ lazy val publishSettings = Seq(
   ),
   scmInfo := Some(
     ScmInfo(
-      url("https://github.com/laserdisc-io/fs2-aws/tree/master"),
-      "scm:git:git@github.com:laserdisc-io/fs2-aws.git",
-      "scm:git:git@github.com:laserdisc-io/fs2-aws.git"
+      url("https://github.com/laserdisc-io/laserdisc-io/tree/master"),
+      "scm:git:git@github.com:laserdisc-io/laserdisc-io.git",
+      "scm:git:git@github.com:laserdisc-io/laserdisc-io.git"
     )
   ),
-  homepage := Some(url("https://github.com/laserdisc-io/fs2-aws/")),
+  homepage := Some(url("https://github.com/laserdisc-io/laserdisc-io/")),
   licenses := Seq(
-    "MIT" -> url("https://raw.githubusercontent.com/laserdisc-io/fs2-aws/master/LICENSE")
+    "MIT" -> url("https://raw.githubusercontent.com/laserdisc-io/laserdisc-io/master/LICENSE")
   ),
   pgpPublicRing    := file(".travis/local.pubring.asc"),
   pgpSecretRing    := file(".travis/local.secring.asc"),
   releaseEarlyWith := SonatypePublisher
-)
-
-lazy val publishSettingsOld = Seq(
-  homepage := Some(url("https://github.com/howardjohn/scanamo-json")),
-  licenses := Seq("MIT" -> url("http://opensource.org/licenses/MIT")),
-  scmInfo := Some(
-    ScmInfo(
-      url("https://github.com/howardjohn/scanamo-json"),
-      "scm:git@github.com:howardjohn/scanamo-json.git"
-    )),
-  developers := List(
-    Developer(
-      id = "howardjohn",
-      name = "John Howard",
-      email = "johnbhoward96@gmail.com",
-      url = url("https://github.com/howardjohn/")
-    )
-  ),
-  publishMavenStyle := true,
-  publishArtifact in Test := false,
-  pomIncludeRepository := { _ =>
-    false
-  },
-  publishTo in ThisBuild := Some("Artifactory" at "https://moda.jfrog.io/moda/sbt"),
-  credentials += {
-    (sys.env.get("JFROG_USER"), sys.env.get("JFROG_PASS")) match {
-      case (Some(user), Some(pass)) => Credentials("Artifactory Realm", "moda.jfrog.io", user, pass)
-      case _ => Credentials(Path.userHome / "credentials.sbt")
-    }
-  }
-//  publishTo := {
-//    val nexus = "https://oss.sonatype.org/"
-//    if (isSnapshot.value)
-//      Some("snapshots" at nexus + "content/repositories/snapshots")
-//    else
-//      Some("releases" at nexus + "service/local/staging/deploy/maven2")
-//  }
 )
