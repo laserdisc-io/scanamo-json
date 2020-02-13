@@ -1,3 +1,5 @@
+import sbt.Keys.{credentials, publishTo}
+
 lazy val scala212 = "2.12.10"
 lazy val scala213 = "2.13.1"
 lazy val supportedScalaVersions = List(scala212, scala213)
@@ -6,8 +8,7 @@ scalaVersion in ThisBuild := scala212
 crossScalaVersions in ThisBuild := supportedScalaVersions
 
 lazy val commonSettings = Seq(
-  organization := "io.github.howardjohn",
-  version := "0.2.2-SNAPSHOT"
+  organization := "io.laserdisc"
 )
 
 def commonOptions(scalaVersion: String) =
@@ -81,32 +82,32 @@ lazy val noPublishSettings = Seq(
   publishArtifact := false
 )
 
+
 lazy val publishSettings = Seq(
-  homepage := Some(url("https://github.com/howardjohn/scanamo-json")),
-  licenses := Seq("MIT" -> url("http://opensource.org/licenses/MIT")),
-  scmInfo := Some(
-    ScmInfo(
-      url("https://github.com/howardjohn/scanamo-json"),
-      "scm:git@github.com:howardjohn/scanamo-json.git"
-    )),
+  publishMavenStyle      := true,
+  Test / publishArtifact := true,
+  pomIncludeRepository   := (_ => false),
   developers := List(
     Developer(
       id = "howardjohn",
       name = "John Howard",
       email = "johnbhoward96@gmail.com",
       url = url("https://github.com/howardjohn/")
+    ),
+    Developer("semenodm", "Dmytro Semenov", "", url("https://github.com/semenodm"))
+  ),
+  scmInfo := Some(
+    ScmInfo(
+      url("https://github.com/laserdisc-io/laserdisc-io/tree/master"),
+      "scm:git:git@github.com:laserdisc-io/laserdisc-io.git",
+      "scm:git:git@github.com:laserdisc-io/laserdisc-io.git"
     )
   ),
-  publishMavenStyle := true,
-  publishArtifact in Test := false,
-  pomIncludeRepository := { _ =>
-    false
-  },
-  publishTo := {
-    val nexus = "https://oss.sonatype.org/"
-    if (isSnapshot.value)
-      Some("snapshots" at nexus + "content/repositories/snapshots")
-    else
-      Some("releases" at nexus + "service/local/staging/deploy/maven2")
-  }
+  homepage := Some(url("https://github.com/laserdisc-io/laserdisc-io/")),
+  licenses := Seq(
+    "MIT" -> url("https://raw.githubusercontent.com/laserdisc-io/laserdisc-io/master/LICENSE")
+  ),
+  pgpPublicRing    := file(".travis/local.pubring.asc"),
+  pgpSecretRing    := file(".travis/local.secring.asc"),
+  releaseEarlyWith := SonatypePublisher
 )
