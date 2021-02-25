@@ -1,15 +1,13 @@
-import sbt.Keys.{credentials, publishTo}
+import sbt.Keys.{ credentials, publishTo }
 
-lazy val scala212 = "2.12.10"
-lazy val scala213 = "2.13.1"
+lazy val scala212               = "2.12.10"
+lazy val scala213               = "2.13.1"
 lazy val supportedScalaVersions = List(scala212, scala213)
 
-scalaVersion in ThisBuild := scala212
+scalaVersion       in ThisBuild := scala212
 crossScalaVersions in ThisBuild := supportedScalaVersions
 
-lazy val commonSettings = Seq(
-  organization := "io.laserdisc"
-)
+organization := "io.laserdisc"
 
 def commonOptions(scalaVersion: String) =
   CrossVersion.partialVersion(scalaVersion) match {
@@ -18,6 +16,39 @@ def commonOptions(scalaVersion: String) =
     case _ => Seq.empty
   }
 
+lazy val commonSettings = Seq(
+  organization := "io.laserdisc",
+  developers := List(
+    Developer(
+      "semenodm",
+      "Dmytro Semenov",
+      "sdo.semenov@gmail.com",
+      url("https://github.com/semenodm")
+    )
+  ),
+  licenses           ++= Seq(("MIT", url("http://opensource.org/licenses/MIT"))),
+  homepage           := Some(url("https://github.com/laserdisc-io/scanamo-json")),
+  crossScalaVersions := supportedScalaVersions,
+  scalaVersion       := scala213,
+  fork               in Test := true,
+  scalacOptions ++= Seq(
+    "-encoding",
+    "UTF-8",                         // source files are in UTF-8
+    "-deprecation",                  // warn about use of deprecated APIs
+    "-unchecked",                    // warn about unchecked type parameters
+    "-feature",                      // warn about misused language features
+    "-language:higherKinds",         // allow higher kinded types without `import scala.language.higherKinds`
+    "-language:implicitConversions", // allow use of implicit conversions
+    "-language:postfixOps",
+    "-Xlint",             // enable handy linter warnings
+    "-Xfatal-warnings",   // turn compiler warnings into errors
+    "-Ywarn-macros:after" // allows the compiler to resolve implicit imports being flagged as unused
+  ),
+  addCompilerPlugin("com.olegpy"    %% "better-monadic-for" % "0.3.1"),
+  addCompilerPlugin("org.typelevel" %% "kind-projector"     % "0.10.3"),
+  libraryDependencies += "org.scala-lang.modules" %% "scala-collection-compat" % "2.4.1"
+)
+
 lazy val root = project
   .in(file("."))
   .settings(commonSettings)
@@ -25,23 +56,21 @@ lazy val root = project
   .settings(noPublishSettings)
   .aggregate(circe, tests)
 
-lazy val CirceVersion = "0.12.3"
-//lazy val PlayVersion = "2.8.0-M7"
-lazy val ScanamoVersion = "1.0.0-M15"
-lazy val ScalaTestVersion = "3.1.0-RC2"
+lazy val CirceVersion     = "0.13.0"
+lazy val ScanamoVersion   = "1.0.0-M15"
+lazy val ScalaTestVersion = "3.2.3"
 
 lazy val circe = project
   .in(file("scanamo-circe"))
   .settings(commonSettings)
   .settings(scalacOptions := commonOptions(scalaVersion.value))
-  .settings(publishSettings)
   .settings(
     moduleName := "scanamo-circe",
     libraryDependencies ++=
       Seq(
-        "io.circe" %% "circe-parser" % CirceVersion,
-        "org.scanamo" %% "scanamo" % ScanamoVersion,
-        "org.scalatest" %% "scalatest" % ScalaTestVersion % "test"
+        "io.circe"      %% "circe-parser" % CirceVersion,
+        "org.scanamo"   %% "scanamo"      % ScanamoVersion,
+        "org.scalatest" %% "scalatest"    % ScalaTestVersion % "test"
       )
   )
   .dependsOn(tests % "test")
@@ -66,47 +95,17 @@ lazy val tests = project
   .in(file("tests"))
   .settings(commonSettings)
   .settings(scalacOptions := commonOptions(scalaVersion.value))
-  .settings(publishSettings)
   .settings(
     moduleName := "scanamo-json-tests",
     libraryDependencies ++=
       Seq(
-        "org.scanamo" %% "scanamo" % ScanamoVersion,
+        "org.scanamo"   %% "scanamo"   % ScanamoVersion,
         "org.scalatest" %% "scalatest" % ScalaTestVersion
       )
   )
 
 lazy val noPublishSettings = Seq(
-  publish := {},
-  publishLocal := {},
+  publish         := {},
+  publishLocal    := {},
   publishArtifact := false
-)
-
-lazy val publishSettings = Seq(
-  publishMavenStyle := true,
-  Test / publishArtifact := true,
-  pomIncludeRepository := (_ => false),
-  developers := List(
-    Developer(
-      id = "howardjohn",
-      name = "John Howard",
-      email = "johnbhoward96@gmail.com",
-      url = url("https://github.com/howardjohn/")
-    ),
-    Developer("semenodm", "Dmytro Semenov", "", url("https://github.com/semenodm"))
-  ),
-  scmInfo := Some(
-    ScmInfo(
-      url("https://github.com/laserdisc-io/laserdisc-io/tree/master"),
-      "scm:git:git@github.com:laserdisc-io/laserdisc-io.git",
-      "scm:git:git@github.com:laserdisc-io/laserdisc-io.git"
-    )
-  ),
-  homepage := Some(url("https://github.com/laserdisc-io/laserdisc-io/")),
-  licenses := Seq(
-    "MIT" -> url("https://raw.githubusercontent.com/laserdisc-io/laserdisc-io/master/LICENSE")
-  ),
-  pgpPublicRing := file(".travis/local.pubring.asc"),
-  pgpSecretRing := file(".travis/local.secring.asc"),
-  releaseEarlyWith := SonatypePublisher
 )
